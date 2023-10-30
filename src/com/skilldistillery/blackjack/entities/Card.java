@@ -1,25 +1,27 @@
 package com.skilldistillery.blackjack.entities;
 
-import java.util.Objects;
-
 public class Card {
 
-	private Suit suit;
 	private Rank rank;
-	
-	public Card(Suit suit, Rank rank) {
-		this.suit = suit;
+	private Suit suit;
+
+	public Card(Rank rank, Suit suit) {
+		super();
 		this.rank = rank;
+		this.suit = suit;
 	}
 
 	public int getValue() {
 		return rank.getValue();
 	}
-	
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(rank, suit);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((rank == null) ? 0 : rank.hashCode());
+		result = prime * result + ((suit == null) ? 0 : suit.hashCode());
+		return result;
 	}
 
 	@Override
@@ -31,12 +33,20 @@ public class Card {
 		if (getClass() != obj.getClass())
 			return false;
 		Card other = (Card) obj;
-		return rank == other.rank && suit == other.suit;
+		if (rank != other.rank)
+			return false;
+		if (suit != other.suit)
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return rank + " of " + suit;
+		StringBuilder builder = new StringBuilder();
+		builder.append(rank);
+		builder.append(" of ");
+		builder.append(suit);
+		return builder.toString();
 	}
 
 }

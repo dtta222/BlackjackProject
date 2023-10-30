@@ -11,6 +11,6 @@ public enum Suit {
 
 	@Override
 	public String toString() {
-		return name;
+		return super.toString();
 	}
 }

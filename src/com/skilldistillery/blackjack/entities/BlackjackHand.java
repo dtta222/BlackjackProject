@@ -1,60 +1,27 @@
 package com.skilldistillery.blackjack.entities;
 
-
 public class BlackjackHand extends Hand {
-	
-	
-	
-	public BlackjackHand() {
-	}
-	
-	
-	public int getHandValue() {
-		int num = 0;
-		
-		for (Card card : cards) {
-			num += card.getValue();
-		}
-		
-		return num;
-		
-	}
-	
-	public boolean isBlackjack() {
-		int blackjack = 0;
-		blackjack = getHandValue();
-		if (blackjack == 21) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean isBust() {
-		int bust = 0;
-		bust = getHandValue();
-		if (bust > 21) {
-			return true;
-		}
-		return false;
-	}
-	
+    // The BlackjackHand class represents a hand in a Blackjack game.
 
+    // The value representing Blackjack
+    private final int BLACKJACK = 21;
 
-	@Override
-	public String toString() {
-		return "Hand: " + cards;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    // Default constructor for creating a Blackjack hand.
+    public BlackjackHand() {
+    }
+
+    @Override
+    public int getHandValue() {
+        return 0;
+    }
+
+    // Checks if a hand's points equal the max Blackjack score.
+    public boolean isBlackjack(int points) {
+        return points == BLACKJACK;
+    }
+
+    // Checks if a hand's points exceed the max Blackjack score.
+    public boolean isBust(int points) {
+        return points > BLACKJACK;
+    }
 }

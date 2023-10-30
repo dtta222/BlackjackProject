@@ -1,36 +1,20 @@
 package com.skilldistillery.blackjack.entities;
 
-public class Player {
-	
-	protected Hand hand;
-	
-	
-	
-	public Player(){
-		this.hand = new BlackjackHand();
-	}
-	
+public class Player extends Hand {
+	// You can add additional player-specific attributes here.
 
+	// Constructor for creating a player object.
+	public Player() {
+		// Perform any player-specific initialization here, if needed.
+	}
+
+	// Calculates and returns the total value of the player's hand based on the card values.
+	@Override
 	public int getHandValue() {
-		int value = 0;
-		value = getHand().getHandValue();
-		
-		return value;
+		int totalValue = 0;
+		for (Card card : cards) {
+			totalValue += card.getValue();
+		}
+		return totalValue;
 	}
-
-	public Hand getHand() {
-		return hand;
-	}
-	
-	public Card getCardFromHand(int i) {
-		Card getCard = hand.cards.get(i);
-		return getCard;
-	}
-
-	
-	
-	
-	
-	
-	
 }

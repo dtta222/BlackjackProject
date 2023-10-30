@@ -5,35 +5,47 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-	private List<Card> deck;
+	protected List<Card> cards;
+	protected Dealer dealer;
 
 	public Deck() {
-		deck = new ArrayList<Card>(52);
+		cards = createDeck();
+		shuffle();
 
-		Suit[] suits = Suit.values();
-		Rank[] ranks = Rank.values();
+	}
 
-		for (Rank rank : ranks) {
-			for (Suit suit : suits) {
-				Card aCard = new Card(suit, rank);
-				deck.add(aCard);
+	private List<Card> createDeck() {
+		List<Card> deck = new ArrayList<>(52);
+		for (Suit s : Suit.values()) {
+			for (Rank r : Rank.values()) {
+				deck.add(new Card(r, s));
 			}
 		}
-
+		return deck;
 	}
 
 	public int checkDeckSize() {
-		return deck.size();
+		return cards.size();
+	}
+
+	public void shuffle() {
+		Collections.shuffle(cards);
 	}
 
 	public Card dealCard() {
-		return deck.remove(0);
+		return cards.remove(0);
+	}
+
+	public void dealCard(Hand hand){
 
 	}
-	
 
-	public void shuffle() {
-		Collections.shuffle(deck);
+	public void stand() {
+
+	}
+
+	public Card hit() {
+		return dealCard();
 	}
 
 }

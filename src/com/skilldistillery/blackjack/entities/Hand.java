@@ -2,49 +2,34 @@ package com.skilldistillery.blackjack.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class Hand {
 	protected List<Card> cards;
-	
-	public Hand() {
-		cards = new ArrayList<Card>();
-		
+	protected Deck deck;
+
+	public Hand(){
+		cards = new ArrayList<>();
 	}
-	
-	public void addCard(Card aCard) {
-		cards.add(aCard);
+
+	public void addCard(Card card){
+		cards.add(card);
 	}
-	
-	public void clear() {
-		
+
+	public void clear(){
+
 	}
-	
+
+	public void displayCards() {
+		for (Card card : cards){
+			System.out.println("\t"+card);
+		}
+	}
+
+
 	public abstract int getHandValue();
 
-	@Override
-	public String toString() {
-		return "Hand [cards=" + cards + "]";
-	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(cards);
+	public String toString(){
+		return null;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Hand other = (Hand) obj;
-		return Objects.equals(cards, other.cards);
-	}
-	
-	
-	
-	
 }
